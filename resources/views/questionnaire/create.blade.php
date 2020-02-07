@@ -22,8 +22,11 @@
 					@enderror
 				</div>
 				<div class="form-group">
+					<div class="form-group">
 				    <label for="purpose">Purpose</label>
-				    <input type="text" class="form-control" name ="purpose" id="purpose" aria-describedby="purposeHelp" placeholder="Enter your purpose of questionnaire">
+				    <textarea class="form-control" id="purpose" name="purpose" rows="3"></textarea>
+				  </div>
+					
 				    <small id="titleHelp" class="form-text text-muted">Giving a purpose that increase responses </small>
 				    @error('purpose')
 						<small class="text-danger">{{ $message }}</small>

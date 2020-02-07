@@ -9,8 +9,9 @@ use App\Questionnaire;
 class QuestionnairesController extends Controller
 {
     //
-    public function __contruct() {
-    	$this->middleware('auth');
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     function create() {
@@ -25,10 +26,10 @@ class QuestionnairesController extends Controller
     	$data['user_id'] = auth()->user()->id;
     	
     	$questionnaire = auth()->user()->questionnaires()->create($data);
-    	return redirect('/questionnaire/'.$questionaire);
+    	return redirect('/questionnaire/'.$questionnaire->id);
     }
 
     function show(Questionnaire $questionnaire) {
-    	return view('questionnaire.show', compact('questionnaire'));
+       	return view('questionnaire.show', compact('questionnaire'));
     }
 }
