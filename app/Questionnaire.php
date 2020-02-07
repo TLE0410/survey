@@ -12,5 +12,8 @@ class Questionnaire extends Model
     public function user() {
     	return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    public function question() {
+    	return $this->hasMany(Question::class, 'questionnaire_id', 'id');
+    }
 
 }
