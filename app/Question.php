@@ -17,4 +17,7 @@ class Question extends Model
     	return $this->belongsTo(Questionnaire::class, 'questionnaire_id', 'id');
     }
     
+    public function responses() {
+    	return $this->hasMany(SurveyResponses::class, 'question_id', 'id');
+    }
 }
