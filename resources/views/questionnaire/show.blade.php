@@ -29,12 +29,19 @@
                                                             {{ $answer->answer }}
                                                         </li>
                                                     @endforeach
+
                                                 </ul>
+                                                <form action="/questionnaire/{{ $questionnaire->id }}/question/{{ $question->id }}" class="mt-3" method="post">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-outline-danger">Delete question</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         @endforeach
                         
                     </div>                        
