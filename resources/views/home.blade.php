@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+Home
+@endsection
+@section('app_name')
+Survey
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -16,13 +22,14 @@
                                 
                                 <p>
                                     <a href="{{ $questionnaire->path() }}" >
-                                        {{ $questionnaire->title }}
+                                        {{ $questionnaire->title }} 
+                                        <span class="font-italic text-danger">({{ $questionnaire->surveys()->count() }})</span>
                                     </a> 
                                 </p>
                                 <small class="mt-5">
                                 
                                     <p class="text-dark font-weight-bold">Share URL :</p>
-                                    <a href="{{ $questionnaire->publicPath() }}" class="font-italic">
+                                    <a href="{{ $questionnaire->publicPath() }}" class="font-italic" target="blank_">
                                         {{ $questionnaire->publicPath() }}
                                     </a>
                                 </small>

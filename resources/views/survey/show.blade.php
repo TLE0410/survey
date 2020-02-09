@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+Survey
+@endsection
 
 @section('content')
 <div class="container">

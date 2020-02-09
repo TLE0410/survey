@@ -8,7 +8,7 @@ use App\SurveyResponses;
 class Survey extends Model
 {
 	protected $guarded = [];
-    public function surveyResponses() {
+    public function responses() {
     	return $this->hasMany(SurveyResponses::class, 'survey_id', 'id');
     }
     public function Questionnaire() {

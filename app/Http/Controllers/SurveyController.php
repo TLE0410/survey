@@ -18,7 +18,7 @@ class SurveyController extends Controller
     		'Survey.email'				=>	'required|email'
     	]);
     	$survey = $questionnaire->surveys()->create($data['Survey']);
-    	$survey->surveyResponses()->createMany($data['responses']);
+    	$survey->responses()->createMany($data['responses']);
     	return 'Thank you';
     }
 }

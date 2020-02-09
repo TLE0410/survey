@@ -1,7 +1,14 @@
 @extends('layouts.app')
+@section('title')
+Create a new question
+@endsection
+@section('app_name')
+Survey
+@endsection
 
 @section('content')
 <div class="container">
+    <a href="/questionnaire/{{ $questionnaire->id }}" class="alert alert-link"> &#60 back</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

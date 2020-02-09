@@ -1,12 +1,19 @@
 @extends('layouts.app')
+@section('title')
+Create
+@endsection
+@section('app_name')
+Survey
+@endsection
 
 @section('content')
 <div class="container">
+	<a href="/home" class="alert-link alert"> 	&#60 back</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
+		
                 <div class="card-body">
                     <div class="row">
 						<div class="col-2"></div>
@@ -35,7 +42,7 @@
 									@enderror
 								</div>
 								@csrf
-								<button type="submit" class="btn btn-primary">SAVE</button>
+								<button type="submit" class="btn btn-primary">NEXT</button>
 
 							</form>
 						</div>

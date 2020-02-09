@@ -30,6 +30,7 @@ class QuestionnairesController extends Controller
     }
 
     function show(Questionnaire $questionnaire) {
+    	
        	return view('questionnaire.show', compact('questionnaire'));
     }
 }
