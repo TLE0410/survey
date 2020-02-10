@@ -13,7 +13,35 @@ Survey
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">{{ $questionnaire->title }}</div>
+            <div class="card-header d-flex justify-content-between">
+                    <div  contenteditable="true">{{ $questionnaire->title }}</div>
+                    <div><button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModalTitle">Edit</button></div>
+            </div>
+            <form action="/questionnaire/{{ $questionnaire->id }}" method="post">
+                @method('PATCH')
+                <div class="modal" id="myModalTitle" name ="myModalTitle" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal body -->
+                            <div class="modal-body card-body">
+                                <input type="text" class="form-control" 
+                                value="{{ $questionnaire->title }}"
+                                name="title">
+                            </div>
+                            
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                
+                                @csrf
+                                <button type="submit" data-target="modal" class="btn btn-danger">Change</button>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
             <div class="card-body">
                 
                 <div class="form-group">
@@ -37,7 +65,6 @@ Survey
                                                 @endif
                                                 
                                             </li>
-
                                             @endforeach
                                         </ul>
                                         <div class="d-flex flex-row mt-3">
@@ -46,7 +73,6 @@ Survey
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
-
                                             <div class="container">
                                                 
                                                 <!-- Button to Open the Modal -->
@@ -54,56 +80,55 @@ Survey
                                                 Edit
                                                 </button>
                                                 <form action="/question/{{ $question->id }}" method="post">
-                                                @method('PATCH')
-                                                <!-- The Modal -->
-                                                <div class="modal" id="myModal{{ $question->id }}" name ="myModal{{ $question->id }}" >
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            
-                                                            <!-- Modal Header -->
-                                                            <div class="modal-header card-header">
-                                                                <h4 class="modal-title" >
+                                                    @method('PATCH')
+                                                    <!-- The Modal -->
+                                                    <div class="modal" id="myModal{{ $question->id }}" name ="myModal{{ $question->id }}" >
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                
+                                                                <!-- Modal Header -->
+                                                                <div class="modal-header card-header">
+                                                                    <h4 class="modal-title" >
                                                                     <input type="text"
-                                                                    value="{{ $question->question }}" 
+                                                                    value="{{ $question->question }}"
                                                                     class="form-group"
                                                                     name="questions[question]"
                                                                     required>
                                                                     @error('questions.question')
                                                                     <small>{{ $message }}</small>
                                                                     @enderror
-                                                                </h4>
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            </div>
-                                                            
-                                                            <!-- Modal body -->
-                                                            <div class="modal-body card-body">
+                                                                    </h4>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
                                                                 
-                                                                @foreach($question->answers as
-                                                                $key => $answer)
-                                                                <input type="text" 
-                                                                class="form-control mt-2" 
-                                                                value="{{ $answer->answer }}"
-                                                                name="answers[][answer]"
-                                                                id="answer{{ $answer->id }}"
-                                                                required>
-                                                                @error('answers.'.$key.'.answer')
+                                                                <!-- Modal body -->
+                                                                <div class="modal-body card-body">
+                                                                    
+                                                                    @foreach($question->answers as
+                                                                    $key => $answer)
+                                                                    <input type="text"
+                                                                    class="form-control mt-2"
+                                                                    value="{{ $answer->answer }}"
+                                                                    name="answers[][answer]"
+                                                                    id="answer{{ $answer->id }}"
+                                                                    required>
+                                                                    @error('answers.'.$key.'.answer')
                                                                     <small>{{ $message }}</small>
                                                                     @enderror
-                                                                @endforeach
-                                                            </div>
-                                                            
-                                                            <!-- Modal footer -->
-                                                            <div class="modal-footer">
+                                                                    @endforeach
+                                                                </div>
                                                                 
-                                                                @csrf
-                                                                <button type="submit" class="btn btn-danger" >update</button>
+                                                                <!-- Modal footer -->
+                                                                <div class="modal-footer">
+                                                                    
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-danger" >update</button>
+                                                                    
+                                                                </div>
                                                                 
                                                             </div>
-                                                            
                                                         </div>
                                                     </div>
-                                                </div>
-
                                                 </form>
                                                 
                                             </div>

@@ -52,5 +52,11 @@ class QuestionnairesController extends Controller
     	$questionnaire->delete();
     	return redirect('/home');
     }
-    
+    function update(Questionnaire $questionnaire) {
+        $data = request()->validate([
+            'title' =>  'required'
+        ]);
+        $questionnaire->update($data);
+        return redirect()->back();
+    }
 }
