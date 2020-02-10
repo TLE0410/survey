@@ -34,5 +34,18 @@ class QuestionController extends Controller
     	$question->delete();
     	return redirect('/questionnaire/'.$questionnaire->id);
     }
+    function update(Question $question, Questionnaire $questionnaire) {
+
+        $data = request()->validate([
+            'questions.question'  =>  'required',
+            'answers.*.answer'    =>  'required'
+        ]);
+        
+        $question->update($data['questions']);
+        foreach ($question->answers()->get() as $key => $answer) {
+            $answer->update($data['answers'][$key]);
+        }
+        return redirect()->back();
+    }
 }
  
